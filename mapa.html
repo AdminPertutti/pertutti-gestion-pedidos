@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Buscar direcci&oacute;n desde mi localizaci&oacute;n</title>
+
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCgLnNtVDtqJySyF1upbSlyvnjt9Vgs1LM&v=3.exp&libraries=places">
+</script>
+<link href="css/estilo.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<div id="mapCanvas"></div>
+<div id="directionsPanel">
+<div class="directionInputs">
+<form>
+<p><label>Buscar la direccion de entrega: </label><input type="text" size="30" value="" id="dirSource" ontoggle="codeAddress()">
+<input id="boton" type="button" value="Ver en el mapa" onclick="codeAddress()"></p>
+</form>
+  <div id="mapa"></div><div id="mapa2"></div>
+</div>
+  <BR>
+  <div> <a3> COSTO DE ENVIO: $ <a3 id="costo"></a3> </a3>
+</div>
+
+<div> <a3> DISTANCIA EN KM : <a3 id="distancia"></a3> Km</a3>
+</div>
+
+<div> <a3> TIEMPO PARA LLEGAR A DESTINO :  <a3 id="tiempo"></a3> minutos </a3>
+</div>
+
+<BR>
+<input id="calcular" type="button" value="Calcular Env&iacute;o" onclick=""></p>
+</div>
+<script type="text/javascript" src="js/mapa.js"></script>
+</body>
+</html>

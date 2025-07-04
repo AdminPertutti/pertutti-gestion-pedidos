@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Redirigir todo el tráfico al subdirectorio verdura si no estamos ya en él
+RewriteCond %{REQUEST_URI} !^/verdura/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /verdura/$1 [L,R=301]
+
+# Reglas para el subdirectorio verdura
+RewriteCond %{REQUEST_URI} ^/verdura/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^verdura/(.*)$ /verdura/index.php/$1 [L]
+
+# Prevent user access to the CI application folder
+RewriteCond %{REQUEST_URI} ^application.*
+RewriteRule ^(.*)$ index.php?/$1 [L]
+</IfModule>

@@ -1,0 +1,293 @@
+header{
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+}
+
+#topbar{
+  background: #367fa9;
+  color:#fff;
+  padding: .5em;
+  height: 50px;
+  font-size: 1.4em;
+}
+body{
+  background: #ecf0f5;
+}
+html, body{
+  height: 100%;
+}
+.nopadding {
+  padding: 0 !important;
+}
+.wrapspace-topbar{
+  height: 60px;
+}
+.wrapspace{
+  height: 105px;
+}
+.wrapspace-footer{
+  height: 50px;
+}
+.full-height{
+  height: 100%;
+}
+.line-col{
+  outline: solid 1px #fff;
+}
+.well{
+  background: #fff;
+}
+.scroll{
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.img-space{
+  width: 100%;
+  height: 4em;
+  background-size: cover;
+  background-position: center;
+}
+
+
+.product{
+  padding: 1em;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 5px;
+  border: solid 1px #eee;
+  margin-bottom: 1em;
+}
+.product .picture{
+  float: left;
+  margin-right: 1em;
+  width: 57px;
+}
+.product .description{
+  overflow: hidden;
+}
+.title{
+  line-height: 1em;
+  margin:0;
+  display: block;
+  font-size: 1.2em;
+}
+.product .title{
+  height: 2em;  
+  overflow: hidden;
+}
+#box_pedido .title{
+  height: auto;
+  margin-bottom: .5em;
+}
+#box_mesas .title{
+  font-size: 2em;
+}
+.price{
+  font-size: 1.2em;
+  color: #DC810C;
+  font-weight: bold;
+}
+small{
+  font-size: .8em;
+  font-weight: normal;
+}
+.btn-app{
+  height: auto;
+  cursor: pointer;
+}
+.empty-text{
+  color: #367fa9;
+  text-align: center;
+  font-size: 1.5em;
+}
+.quantity{
+  font-size: 30px;
+  padding: 6px;
+  line-height: .68em;
+  width: 1.5em;
+}
+.selected{
+  background-color: #92F59D;
+}
+.total-price{
+  font-size: 26px;
+  line-height: 26px;
+}
+.overlay{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.8);
+  z-index: 40;
+  top: 0;
+}
+#adminToken{
+  background: #fff;
+  width: 300px;
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  text-align: center;
+  padding: 1em;
+  z-index: 10;
+  margin-left: -150px;
+}
+#adminToken button{
+  margin-top: 1em;
+}
+
+/***********************/
+.box__header{
+  position: fixed;
+  top: 50px;
+  background: #3F9BD0;
+  color: #fff;
+  padding: .7em;
+  height: 45px;
+}
+.box__header h3{
+  font-size: 1.2em;
+  margin: 0;
+  line-height: 25px;
+  display: inline;
+}
+.box__content{
+  position: fixed;
+  top: 100px;
+  bottom: 50px;
+  overflow: auto;
+}
+#resumen.box,
+#resumen .box__header, 
+#resumen .box__content{
+  left: 0;
+  right: 450px;
+}
+#payment .box__header, 
+#payment .box__content{
+  width: 450px;
+  right: 0;
+}
+#carta.box,
+#carta .box__header, 
+#carta .box__content{
+  left: 0;
+  right: 300px;
+}
+#order .box__header, 
+#order .box__content{
+  width: 300px;
+  right: 0;
+}
+.box__header{
+  top: 50px;
+}
+footer,
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: #367fa9;
+  text-align: right;
+  padding: 7px;
+  z-index: 25;
+}
+.footer{
+  z-index: 30;
+}
+
+
+/* Croquis*/
+.not-in{
+  opacity: .5;
+}
+#croquis{
+  position: fixed;
+  top: 50px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+  z-index: 30;
+  overflow: auto;
+}
+.wrap-croquis{
+  /*max-height: 500px;
+  //overflow: auto;
+  */
+  display: inline-block;
+}
+.croquis{
+  position: relative;
+  background: #5B6DCA;
+  transform-origin: left top;
+
+}
+.croquis.empty{
+  height: 800px;
+  width: 800px;
+}
+.croquis.empty .mesa{
+  outline: dotted 3px white;
+}
+.mesa{
+  /*outline: dotted 3px blue;*/
+  position: absolute;
+  min-width: 20px;
+  min-height: 20px;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: red;
+}
+.mesa .label{
+  /*background: #c9302c;*/
+  display: inline-block;
+  font-size: 1.2em;
+  margin-top:3px;
+  text-align: center;
+}
+.mesa.busy{
+  outline: 0;
+  background: green;
+  cursor: pointer;
+}
+.mesa.busy.other{
+  opacity: 0.5;
+  background: blue;
+}
+.mesa.busy:hover{
+  background: #d43f3a;
+}
+.mesa.selected{
+  outline: 0;
+  background: #006699; /*#3CA548;*/
+}
+.mesa.selected:hover{
+  outline: 0;
+  background: #2DAD3B;
+}
+.mesa:hover{
+  background: red; /*rgba(255, 255, 255, .5);*/
+}
+.control{
+  background: #000;
+  padding: 5px;
+  position: fixed;
+  left: 10px;
+  bottom: 60px;
+  z-index: 90;
+  border-radius: 5px;
+}
+.control span{
+  color: #fff;
+  text-align: center;
+  display: block;
+}
+.mesas{
+  float: left;
+  color: #fff;
+  font-size: 20px;
+}
