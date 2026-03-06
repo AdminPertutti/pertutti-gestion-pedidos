@@ -18,7 +18,7 @@ class Categorias_model extends CI_Model
 
 
 public function agregar_categoria($nombre) {
-  if ($this->session->logedin == TRUE) {
+  if ($this->session->logged_in == TRUE) {
     $data = array(
                 'descripcion' => $nombre
   );
@@ -29,7 +29,7 @@ public function agregar_categoria($nombre) {
 }
 
   public function modifica_categoria($id,$nombre) {
-    if ($this->session->logedin == TRUE) {
+    if ($this->session->logged_in == TRUE) {
       $data = array(
                   'descripcion' => $nombre
     );

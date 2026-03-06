@@ -15,7 +15,7 @@ class Reclamo extends CI_Controller {
 
 	public function index()
 	{
-		if ($this->session->logedin == TRUE) {
+		if ($this->session->logged_in == TRUE) {
 
 					$id = $this->session->s_idusuario;
 		    	$data = array(
@@ -35,7 +35,7 @@ class Reclamo extends CI_Controller {
 	}
 
 	public function nuevoreclamo() {
-		if ($this->session->logedin == TRUE) {
+		if ($this->session->logged_in == TRUE) {
 
 					$id = $this->session->s_idusuario;
 		    	$this->load->view('header');

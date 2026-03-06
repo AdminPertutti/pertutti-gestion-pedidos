@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="<?php echo base_url()."assets/";?>bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="<?php echo base_url()."assets/";?>bower_components/bootstrap-daterangepicker/daterangepicker.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet" href="<?php echo base_url()."assets/";?>dist/css/custom.css">
     <style type="text/css">
     .overlay {
         background: #e9e9e9;
@@ -47,6 +48,29 @@
     <script src="<?php echo base_url()."assets/";?>dist/js/sweetalert2.all.js"></script>
     <script src="<?php echo base_url()."assets/";?>dist/js/pedidos.js?v=<?php echo(rand()); ?>"></script>
     <script src="<?php echo base_url()."assets/";?>plugins/input-mask/jquery.inputmask.js"></script>
+    <script>
+    function toggleDarkMode() {
+        $('body').toggleClass('dark-mode');
+        var isDark = $('body').hasClass('dark-mode');
+        
+        // Update Icon
+        if (isDark) {
+            $('#darkModeIcon').removeClass('fa-moon-o').addClass('fa-sun-o');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            $('#darkModeIcon').removeClass('fa-sun-o').addClass('fa-moon-o');
+            localStorage.setItem('theme', 'light');
+        }
+    }
+
+    // Apply theme on load
+    $(document).ready(function() {
+        if (localStorage.getItem('theme') === 'dark') {
+            $('body').addClass('dark-mode');
+            $('#darkModeIcon').removeClass('fa-moon-o').addClass('fa-sun-o');
+        }
+    });
+    </script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -61,6 +85,12 @@
       </a>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+          <!-- Dark Mode Toggle -->
+          <li>
+            <a href="#" onclick="toggleDarkMode(); return false;" title="Modo Oscuro">
+              <i class="fa fa-moon-o" id="darkModeIcon"></i>
+            </a>
+          </li>
           <li class="dropdown user user-menu">
             <a href="<?php echo base_url()."assets/";?>#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-user-circle fa-3" aria-hidden="true"></i>

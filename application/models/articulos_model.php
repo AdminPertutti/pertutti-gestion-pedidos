@@ -8,7 +8,7 @@ class Articulos_model extends CI_Model
 
   }
   public function agrega_articulo($id,$nombre,$descripcion,$categoria,$sector,$activado) {
-    if ($this->session->logedin == TRUE) {
+    if ($this->session->logged_in == TRUE) {
       $data = array(
                   'nombre' => $nombre,
                   'descripcion' => $descripcion,
@@ -25,7 +25,7 @@ class Articulos_model extends CI_Model
 }
 
 public function agregar_categoria($nombre) {
-  if ($this->session->logedin == TRUE) {
+  if ($this->session->logged_in == TRUE) {
     $data = array(
                 'descripcion' => $nombre
   );
@@ -36,7 +36,7 @@ public function agregar_categoria($nombre) {
 }
 
   public function modifica_articulo($id,$nombre,$descripcion,$categoria,$sector,$activado) {
-    if ($this->session->logedin == TRUE) {
+    if ($this->session->logged_in == TRUE) {
       $data = array(
                   'nombre' => $nombre,
                   'descripcion' => $descripcion,

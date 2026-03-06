@@ -2,7 +2,7 @@
 class Enviar_model extends CI_Model
 {
   public function borrarpedido($id) {
-    if ($this->session->logedin == TRUE) {
+    if ($this->session->logged_in == TRUE) {
     $this->db->where('id', $id);
     $this->db->delete('pedidos');
     $this->db->where('id_pedido', $id);
@@ -75,7 +75,7 @@ public function totalpendientes(){
 
 public function cargarpedido($cantidad1, $cantidad2, $observaciones)
   {
-    if ($this->session->logedin == TRUE) {
+    if ($this->session->logged_in == TRUE) {
     date_default_timezone_set ('America/Argentina/Buenos_Aires');
     $hoy = date("y/m/d h:m:s");
     $data = array(

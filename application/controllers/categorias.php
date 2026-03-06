@@ -17,7 +17,7 @@ class Categorias extends CI_Controller {
 
 	public function index()
 	{
-		if ($this->session->logedin == TRUE) {
+		if ($this->session->logged_in == TRUE) {
 					$data = array(
 					'categorias' => $this->categorias_model->listacategorias()
 					);
@@ -40,7 +40,7 @@ class Categorias extends CI_Controller {
 	}
 
 	public function insertar() {
-		if ($this->session->logedin == TRUE) {
+		if ($this->session->logged_in == TRUE) {
 						$data = array(
 						'categorias' => $this->reposicion_model->listacategorias(),
 						'sectores' => $this->reposicion_model->listasectores()

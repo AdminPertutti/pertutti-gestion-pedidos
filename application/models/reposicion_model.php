@@ -53,9 +53,22 @@ class Reposicion_model extends CI_Model
       $comanda .= $detalle['nombre'];
       } //endfoeach
       if ($comanda != "") {
-        $impresora = $this->reposicion_model->impresora($sector);
-        $this->receiptprint->connect($impresora); //Conectando a la impresora
-        $this->receiptprint->imprimir_comanda($comanda); //Llama a la función para imprimir imprimir_etiquetas
+        $ruta_base = $this->reposicion_model->impresora($sector);
+
+        // Si la ruta termina en \ o / es una carpeta: generar nombre único con timestamp
+        if (substr($ruta_base, -1) === '\\' || substr($ruta_base, -1) === '/') {
+          $nombre_archivo = "comanda_" . date("dmY_His") . ".txt";
+          $impresora = rtrim($ruta_base, '\\/') . DIRECTORY_SEPARATOR . $nombre_archivo;
+        } else {
+          $impresora = $ruta_base; // Ruta completa con nombre de archivo explícito
+        }
+
+        try {
+          $this->receiptprint->connect($impresora);
+          $this->receiptprint->imprimir_comanda($comanda);
+        } catch (Exception $e) {
+          log_message('error', 'Error al generar comanda sector ' . $sector . ': ' . $e->getMessage() . ' | Ruta: ' . $impresora);
+        }
       } //endif
       $comanda = ""; // pone la comanda en cero de vuelta
     } //endfor
@@ -136,7 +149,7 @@ class Reposicion_model extends CI_Model
         {
           date_default_timezone_set ('America/Argentina/Buenos_Aires');
           $datosJSON = json_encode($datos);
-          $hoy = date("y/m/d h:m:s");
+          $hoy = date("Y-m-d H:i:s");
           $data = array(
                 'fecha_repo' => $hoy,
                 'id_usuario' => $this->session->s_idusuario,
@@ -156,16 +169,28 @@ class Reposicion_model extends CI_Model
 
         $comanda = "";
         $array = JSON_decode($datos, true);
-        foreach ($array as $key)
-          {
-          $codigo = $key['codigo'];
-          $detalle = $this->reposicion_model->articulo($codigo);
-          $sector = $key['sector'];
-          $cantidad = $key['cantidad'];
-          $comanda .= "<br>" .$cantidad ." x ";
-          $comanda .= $detalle['nombre'];
-          } //endfoeach
-          return $comanda;
+        if (is_array($array)) {
+            foreach ($array as $key)
+            {
+                $codigo = isset($key['codigo']) ? $key['codigo'] : 0;
+                $detalle = $this->reposicion_model->articulo($codigo);
+                $sector = isset($key['sector']) ? $key['sector'] : 0;
+                $cantidad = isset($key['cantidad']) ? $key['cantidad'] : 0;
+                
+                // Si el articulo fue eliminado, $detalle puede ser null
+                if ($detalle && is_array($detalle)) {
+                    $nombre_articulo = isset($detalle['nombre']) ? $detalle['nombre'] : 'Desconocido';
+                } else {
+                    $nombre_articulo = 'Articulo #' . $codigo;
+                }
+                
+                // Asegurar UTF-8 para evitar que json_encode() trunque la cadena
+                $nombre_articulo = mb_convert_encoding($nombre_articulo, 'UTF-8', 'auto');
+                
+                $comanda .= "<br>" .$cantidad ." x " . $nombre_articulo;
+            } //endfoeach
+        }
+        return $comanda;
 
       } //endfunction
 

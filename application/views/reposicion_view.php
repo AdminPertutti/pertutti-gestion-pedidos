@@ -30,7 +30,7 @@ echo $respuesta;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-size: 16px;
+            font-size: 18px;
             line-height: 1.6;
             margin: 0;
             padding: 0;
@@ -316,7 +316,7 @@ echo $respuesta;
             font-weight: 700;
             color: var(--dark-color);
             margin-bottom: 1.2rem;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -569,12 +569,12 @@ echo $respuesta;
         .order-date {
             font-weight: 700;
             color: var(--dark-color);
-            font-size: 1.05rem;
+            font-size: 1.2rem;
         }
 
         .order-details {
             color: #7f8c8d;
-            font-size: 1rem;
+            font-size: 1.1rem;
             margin-top: 6px;
             line-height: 1.4;
         }

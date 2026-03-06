@@ -19,7 +19,7 @@ class Procesar extends CI_Controller {
 		if 	(isset($_GET['clave']) && $_GET['clave'] == "iddqd478")  {
 			$this->mprocesar->procesar(1);
 
-  			} elseif ($this->session->logedin == TRUE && $this->session->s_nivel == 1) {
+  			} elseif ($this->session->logged_in == TRUE && $this->session->s_nivel == 1) {
 					$data = array(
 						'pedidos' => $this->pedidos_model->ultimospedidossinprocesar(),
 						'procesado' => $this->mprocesar->ultimo_procesado()
@@ -39,21 +39,21 @@ class Procesar extends CI_Controller {
 
 	public function procesar_conmail()
 	{
-				if ($this->session->logedin == TRUE && $this->session->s_nivel == 1) {
+				if ($this->session->logged_in == TRUE && $this->session->s_nivel == 1) {
 					$this->mprocesar->procesar(1);
 				}
 	}
 
 	public function procesar_sinmail()
 	{
-				if ($this->session->logedin == TRUE && $this->session->s_nivel == 1) {
+				if ($this->session->logged_in == TRUE && $this->session->s_nivel == 1) {
 					$this->mprocesar->procesar(0);
 				}
 	}
 
 	public function reimprimir_comandas()
 	{
-	if ($this->session->logedin == TRUE && $this->session->s_nivel == 1) {
+	if ($this->session->logged_in == TRUE && $this->session->s_nivel == 1) {
 			$this->mprocesar->prepara_reimpresion();
 			$this->mprocesar->procesar(0);
 			}

@@ -68,6 +68,41 @@ class Login extends CI_Controller
       $this->load->view('login_view', $data);
 
     } else {
+      // Intento en LANUS (Fallback)
+      $config_lanus = array(
+        'dsn'   => '',
+        'hostname' => 'localhost',
+        'username' => 'root',
+        'password' => '478tvox3',
+        'database' => 'ventas_lanus',
+        'dbdriver' => 'mysqli',
+        'dbprefix' => '',
+        'pconnect' => FALSE,
+        'db_debug' => (ENVIRONMENT !== 'production'),
+        'char_set' => 'utf8',
+        'dbcollat' => 'utf8_general_ci',
+      );
+      $db_lanus = $this->load->database($config_lanus, TRUE); // TRUE devuelve objeto DB
+      
+      $query = $db_lanus->where('usuario', $usu)->where('password', $pass)->get('usuarios');
+      
+      if ($query->num_rows() == 1) {
+          $row = $query->row();
+          if ($row->estado == 1) {
+              // Usuario existe y activo en Lanús: Redireccionar con POST
+              echo '<html><body onload="document.forms[0].submit()">
+                    <div style="text-align: center; margin-top: 50px; font-family: sans-serif;">
+                        <h3>Redirigiendo a Sucursal Lanús...</h3>
+                        <p>Por favor espere.</p>
+                    </div>
+                    <form method="post" action="'.base_url('lanus/index.php/login/ingresar').'">
+                    <input type="hidden" name="txtusuario" value="'.$usu.'">
+                    <input type="hidden" name="txtclave" value="'.$this->input->post('txtclave').'">
+                    </form></body></html>';
+              return;
+          }
+      }
+
       $data['mensaje'] = '<div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <h4><i class="icon fa fa-ban"></i> Alerta!</h4>

@@ -13,7 +13,7 @@ public function __construct()
 
 	public function index()
 	{
-		if ($this->session->logedin == TRUE) {
+		if ($this->session->logged_in == TRUE) {
 							  $data = array(
 								'categorias' => $this->reposicion_model->listacategorias(),
 				  			'datos' => $this->reposicion_model->listaarticulos(),
@@ -52,7 +52,7 @@ public function __construct()
 	} else {
 		$respuesta = "";
 	}
-		if ($this->session->logedin == TRUE) {
+		if ($this->session->logged_in == TRUE) {
 								$data = array(
 								'categorias' => $this->reposicion_model->listacategorias(),
 								'datos' => $this->reposicion_model->listaarticulos(),
@@ -79,7 +79,7 @@ public function __construct()
 
 	public function check_session() //verifica si la session se encuentra activa y devuelve true o false
 	{
-		if ($this->session->logedin == TRUE) {
+		if ($this->session->logged_in == TRUE) {
 			echo "true";
 	} else echo "false";
 }

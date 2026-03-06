@@ -21,7 +21,7 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 
-		if ($this->session->logedin == TRUE) {
+		if ($this->session->logged_in == TRUE) {
 		$this->load->view('header');
 		$this->load->view('welcome_message');
 		$this->load->view('footer');

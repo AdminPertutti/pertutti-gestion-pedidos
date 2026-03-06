@@ -8,7 +8,7 @@ class diasdeentrega extends CI_Controller {
 	{
 		$this->load->model('consulta');
 
-		if ($this->session->logedin == TRUE) {
+		if ($this->session->logged_in == TRUE) {
 
 					$this->load->view('header');
 					$this->load->view('menu');

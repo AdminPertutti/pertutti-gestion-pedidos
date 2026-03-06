@@ -100,7 +100,7 @@ class CI_ReceiptPrint {
     $this->add_line(); // blank line
     $this->add_line('HORA DE PEDIDO');
     date_default_timezone_set ('America/Argentina/Buenos_Aires');
-    $hora = date("h:m:s");
+    $hora = date("H:i:s"); 
     $this->add_line($hora);
     $this->add_line('DE PERTUTTI LOMAS');
     $this->add_line('pedidoslomas.ddns.net');
@@ -132,7 +132,7 @@ class CI_ReceiptPrint {
     $this->add_line(); // blank line
     $this->add_line('HORA DE PEDIDO');
     date_default_timezone_set ('America/Argentina/Buenos_Aires');
-    $hora = date("h:m:s");
+    $hora = date("H:i:s");
     $this->add_line($hora);
     $this->add_line('DE PERTUTTI LOMAS');
     $this->add_line('pedidoslomas.ddns.net');

@@ -15,7 +15,7 @@ class Envios extends CI_Controller {
 
 	public function index()
 	{
-		if ($this->session->logedin == TRUE) {
+		if ($this->session->logged_in == TRUE) {
 				  $data = array(
 							'pendiente' => $this->envios_model->checkpendientes(),
 						'datos' => $this->envios_model->ultimospedidosporempresa(),

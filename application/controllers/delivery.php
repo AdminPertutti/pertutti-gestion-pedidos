@@ -10,7 +10,7 @@ class delivery extends CI_Controller {
 		$this->load->model('delivery_model');
 		$this->load->library('session');
 
-		if ($this->session->logedin == TRUE) {
+		if ($this->session->logged_in == TRUE) {
 					$data = array(
 					'delivery' => $this->delivery_model->datosdelivery($this->session->s_idusuario)
 					);

@@ -15,7 +15,7 @@ class Enviar extends CI_Controller {
 
 	public function index()
 	{
-		if ($this->session->logedin == TRUE && $this->session->s_nivel == 1) {
+		if ($this->session->logged_in == TRUE && $this->session->s_nivel == 1) {
 				  $data = array(
 							'pendiente' => $this->enviar_model->checkpendientes(),
 						'datos' => $this->enviar_model->ultimospedidos(),

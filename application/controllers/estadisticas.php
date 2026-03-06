@@ -9,7 +9,7 @@ class Estadisticas extends CI_Controller {
 		$this->load->model('estadisticas_model');
 		$this->load->library('session');
 
-		if ($this->session->logedin == TRUE) {
+		if ($this->session->logged_in == TRUE) {
 					$datos = array(
 												'total_kilos' => $this->estadisticas_model->totalkilos(),
 												'graficar' => $this->estadisticas_model->graficarkilos(),
@@ -29,7 +29,7 @@ class Estadisticas extends CI_Controller {
 
 	public function comparativa()
 	{
-		if ($this->session->logedin == TRUE) {
+		if ($this->session->logged_in == TRUE) {
 					$datos = array(
 												'total_kilos' => $this->estadisticas_model->totalkilos(),
 												'graficar' => $this->estadisticas_model->graficarkilos(),

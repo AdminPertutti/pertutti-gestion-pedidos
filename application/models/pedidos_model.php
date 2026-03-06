@@ -12,18 +12,19 @@ class Pedidos_model extends CI_Model
   public function modificar($id_pedido, $id_articulo, $cantidad) {
     $this->db->where('id_pedido', $id_pedido);
     $this->db->where('id_articulo', $id_articulo);
-    $this->db->set('cantidad', $cantidad);
-    $resultado = $this->db->update('detalle_pedido');
+    $resultado = $this->db->update('detalle_pedido', array('cantidad' => $cantidad));
     echo $resultado;
 
   }
   public function enviarpedido($id_pedido) {
     date_default_timezone_set ('America/Argentina/Buenos_Aires');
-    $hoy = date("y/m/d h:m:s");
+    $hoy = date("Y-m-d H:i:s");
+    $data = array(
+        'enviado' => 1,
+        'fechaenviado' => $hoy
+    );
     $this->db->where('id', $id_pedido);
-    $this->db->set('enviado', 1);
-    $this->db->set('fechaenviado', $hoy);
-    $this->db->update('pedidos');
+    $this->db->update('pedidos', $data);
 
     //Ver que local hizo el pedido para enviar mails
     $this->db->select('*');
@@ -31,7 +32,7 @@ class Pedidos_model extends CI_Model
     $this->db->where('id', $id_pedido);
     $query=$this->db->get();
     $data=$query->result();
-    var_dump($data);
+    // 
     foreach ($data as $columna1) {
     $local = $columna1->id_usuario;
     }
@@ -41,7 +42,7 @@ class Pedidos_model extends CI_Model
     $this->db->where('idUsr', $local);
     $query2=$this->db->get();
     $data2= $query2->result();
-    var_dump($data2);
+    // 
     foreach ($data2 as $columna2) {
       $correo = $columna2->usuario;
       $nombre = $columna2->empresa;
@@ -101,7 +102,7 @@ class Pedidos_model extends CI_Model
       $this->db->order_by('pedidos.id','DESC');
       $query=$this->db->get();
       $data= $query->result_array();
-      //var_dump($data);
+      //
       return $data;
   }
 
@@ -154,7 +155,7 @@ class Pedidos_model extends CI_Model
   		$this->db->order_by('pedidos.id','DESC');
   		$query=$this->db->get();
   		$data= $query->result_array();
-  		//var_dump($data);
+  		//
       return $data;
   }
 
@@ -208,9 +209,9 @@ public function totalpendientes(){
 
 public function cargarpedido($cantidad1, $cantidad2, $detalle)
   {
-    if ($this->session->logedin == TRUE) {
+    if ($this->session->logged_in == TRUE) {
     date_default_timezone_set ('America/Argentina/Buenos_Aires');
-    $hoy = date("y/m/d h:m:s");
+    $hoy = date("Y-m-d H:i:s");
     $datosJSON = json_encode($detalle);
     $data = array(
                   'id_usuario' => $this->session->s_idusuario,
@@ -296,9 +297,9 @@ public function cargarpedido($cantidad1, $cantidad2, $detalle)
 
     public function cargapedidolocal($cantidad1, $cantidad2, $observaciones, $local, $idusuario)
       {
-        if ($this->session->logedin == TRUE) {
+        if ($this->session->logged_in == TRUE) {
         date_default_timezone_set ('America/Argentina/Buenos_Aires');
-        $hoy = date("y/m/d h:m:s");
+        $hoy = date("Y-m-d H:i:s");
         $datosJSON = json_encode($observaciones);
         $data = array(
                       'id_usuario' => $idusuario,

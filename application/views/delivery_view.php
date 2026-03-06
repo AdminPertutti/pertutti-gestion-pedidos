@@ -57,6 +57,7 @@
 
            }
            ?>
+
          <div> <a3> COSTO DE ENVIO: $ <a3 id="costo"></a3> </a3>
        </div>
 

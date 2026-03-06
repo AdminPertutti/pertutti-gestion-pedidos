@@ -53,7 +53,8 @@ class Mlogin extends CI_Model
           's_local' => $r->empresa,
           's_pendientes' => $pendientes,
           's_nivel' => $r->Nivel_acceso,
-          'logedin' => TRUE
+          's_permisos' => $r->permisos,
+          'logged_in' => TRUE
         );
           //var_dump($s_usuario);
 
@@ -81,7 +82,7 @@ class Mlogin extends CI_Model
       }
       public function Salir()
       {
-        if ($this->session->logedin == TRUE) {
+        if ($this->session->logged_in == TRUE) {
         date_default_timezone_set ('America/Argentina/Buenos_Aires');
         $hoy = date("y/m/d h:m:s");
         $data = array(

@@ -79,14 +79,15 @@ $config['url_suffix'] = '';
 $config['language']	= 'english';
 
 $config['protocol'] = 'smtp';
-$config['smtp_host'] = 'smtp.gmail.com';
+$config['smtp_host'] = 'smtp-relay.brevo.com';
 $config['smtp_port'] = 587;
-$config['smtp_user'] = 'pedidoslomasddns@gmail.com';
-$config['smtp_pass'] = 'jgnmfsovopqgkfru';
-$config['smtp_crypto'] = 'tls';
-$config['charset'] = 'utf-8';
+$config['smtp_user'] = 'a135c0001@smtp-brevo.com';
+$config['smtp_pass'] = 'bskNUxyh3eHZQiE';
+$config['smtp_crypto'] = 'ssl';
 $config['mailtype'] = 'html';
 $config['newline'] = "\r\n";
+$config['crlf'] = "\r\n";
+$config['smtp_timeout'] = 10;
 
 
 /*
